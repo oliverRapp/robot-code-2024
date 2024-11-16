@@ -63,6 +63,10 @@ public class FTCTeleOp extends OpMode {
       leftStickY = Math.sin(angle);
       if (rightStickX != 0) rightStickX = Math.signum(rightStickX) * 1;
     } else {
+      leftStickX = Math.pow(leftStickX, 3);
+      leftStickY = Math.pow(leftStickY, 3);
+      rightStickX = Math.pow(rightStickX, 3);
+
       leftStickY = Math.signum(leftStickY) * (Math.abs(leftStickY) * (1 - deadZone) + deadZone);
       leftStickX = Math.signum(leftStickX) * (Math.abs(leftStickX) * (1 - deadZone) + deadZone);
       rightStickX = Math.signum(rightStickX) * (Math.abs(rightStickX) * (1 - deadZone) + deadZone);
