@@ -53,9 +53,6 @@ public class FTCTeleOp extends OpMode {
     boolean dpadLeft = g.dpad_left;
     boolean dpadRight = g.dpad_right;
 
-    if (dpadRight) deadZone += 0.01;
-    if (dpadLeft) deadZone -= 0.01;
-
     if (clicks[0]) drivetrainUseMaxSpeed = !drivetrainUseMaxSpeed;
     if (drivetrainUseMaxSpeed) {
       double angle = Math.atan2(leftStickY, leftStickX);
@@ -74,6 +71,13 @@ public class FTCTeleOp extends OpMode {
 
     double[] powers = robot.drivetrain.driveFluid(leftStickY, leftStickX, rightStickX);
 
+    if (leftTrigger != 0 && rightTrigger == 0) {
+      robot.arm.setPower(-leftTrigger);
+    }
+    if (rightTrigger != 0 && leftTrigger == 0) {
+      robot.arm.setPower(rightTrigger);
+    }
+
     telemetry.addData("left y", leftStickY);
     telemetry.addData("left x", leftStickX);
     telemetry.addData("right x", rightStickX);
@@ -81,7 +85,7 @@ public class FTCTeleOp extends OpMode {
     telemetry.addData("front right power", powers[1]);
     telemetry.addData("back left power", powers[2]);
     telemetry.addData("back right power", powers[3]);
-    telemetry.addData("dead zone", deadZone);
+    telemetry.addData("arm power", robot.arm.motor.getCurrentPosition());
     telemetry.update();
   }
 }

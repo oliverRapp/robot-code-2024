@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Arm {
-  private DcMotor motor;
+  public DcMotor motor;
 
   public Arm(HardwareMap hwMap) {
     motor = hwMap.get(DcMotor.class, "arm");
