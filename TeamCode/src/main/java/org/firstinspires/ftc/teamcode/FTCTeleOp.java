@@ -25,7 +25,7 @@ public class FTCTeleOp extends OpMode {
 
   @Override
   public void loop() {
-    Gamepad g = gamepad2;
+    Gamepad g = gamepad2 ;
 
     boolean[] clicks = {false, false, false, false};
     if (g.a && !buttons[0]) {

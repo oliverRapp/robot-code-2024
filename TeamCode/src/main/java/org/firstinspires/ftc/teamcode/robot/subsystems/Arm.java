@@ -9,11 +9,11 @@ public class Arm {
   public Arm(HardwareMap hwMap) {
     motor = hwMap.get(DcMotor.class, "arm");
 
-    motor.setDirection(DcMotorSimple.Direction.FORWARD);
+    motor.setDirection(DcMotor.Direction.FORWARD);
     motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
   }
 
-  public setPower(double power) {
+  public void setPower(double power) {
     motor.setPower(power);
   }
 }
