@@ -25,7 +25,7 @@ public class FTCTeleOp extends OpMode {
 
   @Override
   public void loop() {
-    Gamepad g = gamepad2 ;
+    Gamepad g = gamepad2;
 
     boolean[] clicks = {false, false, false, false};
     if (g.a && !buttons[0]) {
@@ -76,6 +76,9 @@ public class FTCTeleOp extends OpMode {
     }
     if (rightTrigger != 0 && leftTrigger == 0) {
       robot.arm.setPower(rightTrigger);
+    }
+    if (rightTrigger == 0 && leftTrigger == 0) {
+      robot.arm.setPower(0);
     }
 
     telemetry.addData("left y", leftStickY);
