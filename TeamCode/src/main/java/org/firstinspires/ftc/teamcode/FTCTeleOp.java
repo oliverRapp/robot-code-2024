@@ -48,6 +48,8 @@ public class FTCTeleOp extends OpMode {
     double leftStickY = g.left_stick_y;
     double leftStickX = g.left_stick_x;
     double rightStickX = g.right_stick_x;
+    double leftTrigger = g.left_trigger;
+    double rightTrigger = g.right_trigger;
     boolean dpadLeft = g.dpad_left;
     boolean dpadRight = g.dpad_right;
 

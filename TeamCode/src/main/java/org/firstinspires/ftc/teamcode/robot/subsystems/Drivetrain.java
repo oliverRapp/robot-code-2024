@@ -23,6 +23,8 @@ public class Drivetrain {
     backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
     backRight.setDirection(DcMotorSimple.Direction.FORWARD);
 
+    frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    frontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
   }
