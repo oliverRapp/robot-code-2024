@@ -10,6 +10,7 @@ public class Arm {
     motor = hwMap.get(DcMotor.class, "arm");
 
     motor.setDirection(DcMotor.Direction.FORWARD);
+    motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
   }
 
