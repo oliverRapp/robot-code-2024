@@ -20,46 +20,47 @@ public class FTCTeleOp extends OpMode {
 
   @Override
   public void loop() {
-    double leftStickY = gamepad1.left_stick_y;
-    double leftStickX = gamepad1.left_stick_x;
-    double rightStickX = gamepad1.right_stick_x;
+    double leftStickY1 = gamepad1.left_stick_y;
+    double leftStickX1 = gamepad1.left_stick_x;
+    double rightStickX1 = gamepad1.right_stick_x;
     boolean xButton1 = gamepad1.x;
 
-    double leftTrigger = gamepad2.left_trigger;
-    double rightTrigger = gamepad2.right_trigger;
-    boolean aButton = gamepad2.a;
+    double leftTrigger2 = gamepad2.left_trigger;
+    double rightTrigger2 = gamepad2.right_trigger;
+    boolean aButton2 = gamepad2.a;
     boolean xButton2 = gamepad2.x;
 
-    if (aButton) {
-      double angle = Math.atan2(leftStickY, leftStickX);
-      leftStickX = Math.cos(angle);
-      leftStickY = Math.sin(angle);
-      if (rightStickX != 0) rightStickX = Math.signum(rightStickX) * 1;
+    if (aButton2) {
+      double angle = Math.atan2(leftStickY1, leftStickX1);
+      leftStickX1 = Math.cos(angle);
+      leftStickY1 = Math.sin(angle);
+      if (rightStickX1 != 0) rightStickX1 = Math.signum(rightStickX1) * 1;
     } else {
-      leftStickX = Math.pow(leftStickX, 3);
-      leftStickY = Math.pow(leftStickY, 3);
-      rightStickX = Math.pow(rightStickX, 3);
+      leftStickX1 = Math.pow(leftStickX1, 3);
+      leftStickY1 = Math.pow(leftStickY1, 3);
+      rightStickX1 = Math.pow(rightStickX1, 3);
 
-      leftStickY = Math.signum(leftStickY) * (Math.abs(leftStickY) * (1 - deadZone) + deadZone);
-      leftStickX = Math.signum(leftStickX) * (Math.abs(leftStickX) * (1 - deadZone) + deadZone);
-      rightStickX = Math.signum(rightStickX) * (Math.abs(rightStickX) * (1 - deadZone) + deadZone);
+      leftStickY1 = Math.signum(leftStickY1) * (Math.abs(leftStickY1) * (1 - deadZone) + deadZone);
+      leftStickX1 = Math.signum(leftStickX1) * (Math.abs(leftStickX1) * (1 - deadZone) + deadZone);
+      rightStickX1 =
+          Math.signum(rightStickX1) * (Math.abs(rightStickX1) * (1 - deadZone) + deadZone);
     }
 
-    double[] powers = robot.drivetrain.driveFluid(leftStickY, leftStickX, rightStickX);
+    double[] powers = robot.drivetrain.driveFluid(leftStickY1, leftStickX1, rightStickX1);
 
-    if (leftTrigger != 0 && rightTrigger == 0) {
-      robot.arm.setPower(-leftTrigger);
+    if (leftTrigger2 != 0 && rightTrigger2 == 0) {
+      robot.arm.setSlidePower(-leftTrigger2);
     }
-    if (rightTrigger != 0 && leftTrigger == 0) {
-      robot.arm.setPower(rightTrigger);
+    if (rightTrigger2 != 0 && leftTrigger2 == 0) {
+      robot.arm.setSlidePower(rightTrigger2);
     }
-    if (rightTrigger == 0 && leftTrigger == 0) {
-      robot.arm.setPower(0);
+    if (rightTrigger2 == 0 && leftTrigger2 == 0) {
+      robot.arm.setSlidePower(0);
     }
 
-    // telemetry.addData("left y", leftStickY);
-    // telemetry.addData("left x", leftStickX);
-    // telemetry.addData("right x", rightStickX);
+    // telemetry.addData("left y", leftStickY1);
+    // telemetry.addData("left x", leftStickX1);
+    // telemetry.addData("right x", rightStickX1);
     // telemetry.addData("front left power", powers[0]);
     // telemetry.addData("front right power", powers[1]);
     // telemetry.addData("back left power", powers[2]);
