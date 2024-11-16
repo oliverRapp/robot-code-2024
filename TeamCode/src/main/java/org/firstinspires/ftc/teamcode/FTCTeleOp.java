@@ -10,10 +10,6 @@ public class FTCTeleOp extends OpMode {
   private Robot robot;
 
   private double deadZone = 0.0;
-  private boolean drivetrainUseMaxSpeed = false;
-
-  //                           a      b      x      y
-  private boolean[] buttons = {false, false, false, false};
 
   @Override
   public void init() {
@@ -27,24 +23,6 @@ public class FTCTeleOp extends OpMode {
   public void loop() {
     Gamepad g = gamepad2;
 
-    boolean[] clicks = {false, false, false, false};
-    if (g.a && !buttons[0]) {
-      clicks[0] = true;
-    }
-    if (g.b && !buttons[1]) {
-      clicks[1] = true;
-    }
-    if (g.x && !buttons[2]) {
-      clicks[2] = true;
-    }
-    if (g.y && !buttons[3]) {
-      clicks[3] = true;
-    }
-    buttons[0] = g.a;
-    buttons[1] = g.b;
-    buttons[2] = g.x;
-    buttons[3] = g.y;
-
     double leftStickY = g.left_stick_y;
     double leftStickX = g.left_stick_x;
     double rightStickX = g.right_stick_x;
@@ -52,9 +30,9 @@ public class FTCTeleOp extends OpMode {
     double rightTrigger = g.right_trigger;
     boolean dpadLeft = g.dpad_left;
     boolean dpadRight = g.dpad_right;
+    boolean aButton = g.a;
 
-    if (clicks[0]) drivetrainUseMaxSpeed = !drivetrainUseMaxSpeed;
-    if (drivetrainUseMaxSpeed) {
+    if (aButton) {
       double angle = Math.atan2(leftStickY, leftStickX);
       leftStickX = Math.cos(angle);
       leftStickY = Math.sin(angle);
